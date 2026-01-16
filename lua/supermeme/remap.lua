@@ -1,22 +1,33 @@
-vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
-vim.keymap.set("n", "<leader>w", ":w<CR>")
-vim.keymap.set("n", "<leader>q", ":q<CR>")
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
--- vim.keymap.set("n", "<leader>rpy", ":wa<CR>:!python -u %<CR>")
-vim.keymap.set("i", "<C-BS>", "<C-w>")
-vim.keymap.set({"v", "n"}, "<leader>y", '"+y')
-vim.keymap.set({"v", "n"}, "<leader>p", '"+p')
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.opt.nu = true
+vim.opt.cursorline = true
+vim.opt.relativenumber = true
+vim.g.fast_cursor_move_acceleration = false
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
 
-vim.opt.clipboard = 'unnamedplus'
+vim.opt.wrap = false
 
-vim.keymap.set("n", "<C-p>", ":Telescope  find_files<CR>")
-vim.keymap.set("n", "<C-f>", ":Telescope  live_grep<CR>")
-vim.keymap.set({"v", "n", "i"}, "<C-b>", ":NvimTreeToggle<CR>")
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undofile = true
+vim.opt.equalalways = true
 
-vim.keymap.set("n", "<leader>md", ":MarkdownPreviewToggle<CR>")
-vim.keymap.set({"v", "n"}, "<leader>cm", ":CommentToggle<CR>")
+vim.opt.autoread = true
+
+vim.api.nvim_create_autocmd("BufWinEnter", {
+    pattern = { "*.inp", "*.out", "*.ans" },
+    callback = function()
+        vim.opt_local.winfixwidth = true
+    end,
+})
+
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+vim.opt.scrolloff = 10
+vim.opt.signcolumn = 'yes' 
+
+vim.opt.updatetime = 50
